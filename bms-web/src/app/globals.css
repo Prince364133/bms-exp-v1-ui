@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-green: var(--neon-accent);
+  --color-neon-primary: var(--neon-accent);
+  --color-neon-accent: var(--neon-accent);
+  --color-neon-green-glow: var(--glow-color);
+}
+
+:root {
+  --background: #fcfcfc;
+  --foreground: #000000;
+  --neon-accent: #219150;
+  --glow-color: rgba(33, 145, 80, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.3);
+  /* High transparency for ice effect */
+  --border-color: rgba(255, 255, 255, 0.5);
+  /* Frosty white border */
+  --nav-bg: rgba(255, 255, 255, 0.25);
+  --text-muted: rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 8px 32px rgba(31, 38, 135, 0.05);
+  /* Slight "cool" tint to shadow */
+  --shadow-lg: 0 8px 32px rgba(31, 38, 135, 0.1);
+  --glass-blur: 28px;
+  /* Extra high blur for "frozen" feel */
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --ice-highlight: rgba(255, 255, 255, 0.8);
+}
+
+.dark {
+  --background: #050505;
+  --foreground: #ffffff;
+  --neon-accent: #39FF14;
+  --glow-color: rgba(57, 255, 20, 0.3);
+  --card-bg: rgba(20, 20, 20, 0.8);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(10, 10, 10, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 28px 70px rgba(0, 0, 0, 0.4);
+  --glass-blur: 16px;
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s ease;
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-sm), inset 0 0 10px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neon-glow {
+  text-shadow: 0 0 15px var(--glow-color);
+}
+
+.neon-button {
+  background: transparent;
+  border: 2px solid var(--neon-accent);
+  color: var(--neon-accent);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px var(--neon-accent);
+}
+
+.neon-button:hover {
+  background: var(--neon-accent);
+  color: #000;
+  box-shadow: 0 0 20px var(--neon-accent);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #39FF14, #00D1FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Utilities */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
