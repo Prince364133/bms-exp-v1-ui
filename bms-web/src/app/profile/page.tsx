@@ -49,7 +49,6 @@ export default function ProfilePage() {
             status: "Enrolled"
         }
     ];
-
     return (
         <main className="min-h-screen bg-background text-foreground transition-all duration-500">
             <Navbar />

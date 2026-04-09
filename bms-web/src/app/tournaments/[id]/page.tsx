@@ -11,8 +11,15 @@ import {
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 
-const tournamentData = {
-    1: {
+const tournamentData: Record<string, {
+    title: string; sport: string; date: string; location: string; city: string;
+    entryFee: number; prizePool: string; format: string; teamsRegistered: number;
+    maxTeams: number; image: string; description: string;
+    rules: string[];
+    prizes: { rank: string; prize: string; color: string }[];
+    schedule: { day: string; event: string; time: string }[];
+}> = {
+    '1': {
         title: "STAND & DELIVER 11",
         sport: "Cricket",
         date: "Mar 28, 2026 - Apr 5, 2026",
@@ -49,7 +56,7 @@ export default function TournamentDetailsPage() {
     const params = useParams();
     const router = useRouter();
     const id = typeof params?.id === 'string' ? params.id : '1';
-    const tournament = tournamentData[id as keyof typeof tournamentData] || tournamentData[1];
+    const tournament = tournamentData[id] ?? tournamentData['1'];
 
     const progress = (tournament.teamsRegistered / tournament.maxTeams) * 100;
 
